@@ -11,6 +11,11 @@
         DELETE FROM board
     </delete>
 
+
+    <delete id="deleteForAdmin">
+        DELETE FROM board WHERE bno = #{bno}
+    </delete>
+
     <delete id="delete" parameterType="map">
         DELETE FROM board WHERE bno = #{bno} and writer = #{writer}
     </delete>
@@ -32,7 +37,6 @@
         SELECT bno, title, content, writer, view_cnt, comment_cnt, reg_date
         FROM board
     </sql>
-
     <select id="select" parameterType="int" resultType="BoardDto">
         <include refid="selectFromBoard"/>
         WHERE bno = #{bno}
