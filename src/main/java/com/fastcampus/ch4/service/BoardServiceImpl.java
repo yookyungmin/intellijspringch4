@@ -5,12 +5,25 @@ import com.fastcampus.ch4.domain.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 
+import java.rmi.server.ExportException;
 import java.util.*;
 //Transaction을 처리할게 없어서 예외를 throws Exception으로 컨트롤러로 처리중
 @Service
 public class BoardServiceImpl implements BoardService {
     @Autowired
     BoardDao boardDao;
+
+
+
+    @Override
+    public List<BoardDto> getSearchResultPage(SearchCondition sc) throws Exception{
+        return boardDao.searchSelectPage(sc);
+    }
+    @Override
+    public int getSearchResultCnt(SearchCondition sc) throws  Exception{
+        return boardDao.searchResultCnt(sc);
+    }
+
 
     @Override
     public int getCount() throws Exception {
