@@ -102,6 +102,9 @@
         <include refid="searchCondition"></include>
 
     </select>
+
+
+
 </mapper>
 
 <!-- 호출하기위해선 BoardDao 필요-->

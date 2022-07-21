@@ -11,7 +11,7 @@ import java.util.*;
 public class BoardDaoImpl implements BoardDao {
     @Autowired
     private SqlSession session;
-    private static String namespace = "com.fastcampus.ch4.dao.BoardMapper.";
+    private static String namespace = "com.fastcampus.ch4.dao.BoardMapper."; //Dao 필수
 
     @Override
     public int count() throws Exception {
@@ -68,6 +68,14 @@ public class BoardDaoImpl implements BoardDao {
     @Override
     public List<BoardDto> searchSelectPage(SearchCondition sc) throws Exception {
         return session.selectList(namespace+"searchSelectPage", sc);
+    }
+
+    @Override
+    public int updateCommentCnt(Integer bno, int cnt) {
+        Map map = new HashMap();
+        map.put("cnt", cnt);
+        map.put("bno", bno);
+        return session.update(namespace+"updateCommentCnt", map);
     }
 
 }
