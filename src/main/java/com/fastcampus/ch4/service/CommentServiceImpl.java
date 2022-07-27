@@ -32,7 +32,6 @@ public class CommentServiceImpl implements CommentService {
         return commentDao.count(bno);
     }
 
-    @Override
 
     @Transactional(rollbackFor = Exception.class)  //checked 예외는 롤백 안됨
     public int remove(Integer cno, Integer bno, String commenter) throws Exception {

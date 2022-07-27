@@ -25,10 +25,10 @@
     </insert>
 
     <select id="selectAll" parameterType="int" resultType="CommentDto">
-        SELECT cno, bno, pcno, comment, commenter, reg_date, up_date
+        SELECT cno, bno, ifnull(pcno, cno) as pcno, comment, commenter, reg_date, up_date
         FROM comment
         WHERE bno = #{bno}
-        ORDER BY reg_date ASC, cno ASC
+        ORDER BY pcno ASC, cno ASC; <!-- 답글 등록시 바로 밑에 달리게 하기-->
     </select>
 
     <select id="select" parameterType="int" resultType="CommentDto">
